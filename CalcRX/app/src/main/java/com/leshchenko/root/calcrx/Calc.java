@@ -9,11 +9,11 @@ import android.widget.EditText;
 public class Calc
 {
 private int res;
-    public Calc(EditText val1, EditText val2, EditText op) {
+    public Calc(String val1, String op,String val2) {
 
-        int numA=Integer.parseInt(String.valueOf(val1.getText()));
-        int numB=Integer.parseInt(String.valueOf(val2.getText()));
-        String oper = String.valueOf((op.getText()));
+        int numA=Integer.parseInt(String.valueOf(val1));
+        int numB=Integer.parseInt(String.valueOf(val2));
+        String oper = String.valueOf((op));
 
         switch (oper)
         {

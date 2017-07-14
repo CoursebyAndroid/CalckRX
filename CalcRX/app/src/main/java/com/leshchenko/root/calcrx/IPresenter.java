@@ -18,8 +18,10 @@ public interface IPresenter
     Observable<CharSequence>listerSecondValue(EditText et, Drawable isTrue,Drawable isFalse);
     Observable<CharSequence>listerOper(EditText et, Drawable isTrue,Drawable isFalse);
     void showBtn(Object ...params);
-    //void calc(Object ...params);
-    void doCalc(String str);
+    int calc(String fv, String op, String sv);
+
+    Observable<Integer> doCalc(String fv, String op, String sv);
+
     void saveDate(String str);
     void deleteData(String str);
     void readData(String str);

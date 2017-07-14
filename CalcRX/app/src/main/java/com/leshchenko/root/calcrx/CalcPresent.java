@@ -23,6 +23,7 @@ public class CalcPresent implements IPresenter
 
     private static final String TAG = "CalcPresent " ;
     private IView calcView;
+    private Calc calc;
 
     public CalcPresent(IView calcView)
     {
@@ -35,7 +36,7 @@ public class CalcPresent implements IPresenter
     }
 
     private boolean isValueValid(CharSequence value){
-        return value.toString().matches("[0-9]");
+        return value.toString().matches("[0-9]*");
     }
 
     private boolean isOperandValid(CharSequence value){
@@ -105,15 +106,15 @@ public class CalcPresent implements IPresenter
     }
 
 
-    public void calc(Object... params)
+    public int calc(String fv, String op, String sv)
     {
-
+        calc = new Calc(fv,op,sv);
+        return calc.getRes();
     }
 
     @Override
-    public void doCalc(String str)
-    {
-
+    public Observable<Integer> doCalc(String fv, String op, String sv) {
+        return Observable.just(calc(fv, op, sv));
     }
 
     @Override
