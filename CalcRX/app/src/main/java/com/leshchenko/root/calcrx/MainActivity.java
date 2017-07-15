@@ -3,6 +3,7 @@ package com.leshchenko.root.calcrx;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import rx.Observable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, IView {
+    private static String TAG = "MainActivity ";
+
     private EditText val1, val2, op;
     private TextView res;
     private Drawable mInvalidvalue, mValidValue;
@@ -18,10 +21,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private IPresenter iPresenter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(TAG,"onCreate ");
         val1 = (EditText) findViewById(R.id.id_txt_val_1);
         op = (EditText) findViewById(R.id.id_txt_op);
         val2 = (EditText) findViewById(R.id.id_txt_val_2);
@@ -43,26 +48,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Log.d(TAG,"onClick ");
         String fv = String.valueOf(val1.getText());
         String opr = String.valueOf(op.getText());
         String sv = String.valueOf(val2.getText());
         switch (v.getId()) {
             case R.id.btn_result:
                 iPresenter.doCalc(fv, opr, sv).subscribe(result -> {
-                     String str = String.valueOf(result);
+                    String str = String.valueOf(result);
                     res.setText(str);
+                    iPresenter.saveDate(new CalcResult(fv,opr,sv,str));
                 });
                 break;
         }
-
-//        Calc calc = new Calc( val1,  val2,  op);
-//        switch (v.getId()){
-//            case R.id.btn_result:
-//                int rex = calc.getRes();
-//                res.setText(String.valueOf(rex));
-//                break;
-//        }
-
     }
 
     @Override

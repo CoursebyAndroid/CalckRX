@@ -22,7 +22,7 @@ public interface IPresenter
 
     Observable<Integer> doCalc(String fv, String op, String sv);
 
-    void saveDate(String str);
+    void saveDate(CalcResult calcResult);
     void deleteData(String str);
     void readData(String str);
 }

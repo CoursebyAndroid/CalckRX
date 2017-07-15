@@ -1,12 +1,17 @@
 package com.leshchenko.root.calcrx;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import com.jakewharton.rxbinding.widget.RxTextView;
+
+import java.util.ArrayList;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,6 +29,10 @@ public class CalcPresent implements IPresenter
     private static final String TAG = "CalcPresent " ;
     private IView calcView;
     private Calc calc;
+    private PrefsAdapter prefsAdapter;
+    private Context mContext;
+
+
 
     public CalcPresent(IView calcView)
     {
@@ -36,7 +45,7 @@ public class CalcPresent implements IPresenter
     }
 
     private boolean isValueValid(CharSequence value){
-        return value.toString().matches("[0-9]*");
+        return value.toString().matches("^[1-9][1-9-0-9_\\.]{0,20}$");
     }
 
     private boolean isOperandValid(CharSequence value){
@@ -108,19 +117,23 @@ public class CalcPresent implements IPresenter
 
     public int calc(String fv, String op, String sv)
     {
+        Log.d(TAG," calc");
         calc = new Calc(fv,op,sv);
         return calc.getRes();
     }
 
     @Override
     public Observable<Integer> doCalc(String fv, String op, String sv) {
+        Log.d(TAG," doCalc");
         return Observable.just(calc(fv, op, sv));
     }
 
     @Override
-    public void saveDate(String str)
+    public void saveDate(CalcResult calcResult)
     {
-
+        Log.d(TAG," saveDate");
+        prefsAdapter = new PrefsAdapter(mContext);
+        prefsAdapter.insert(calcResult);
     }
 
     @Override
