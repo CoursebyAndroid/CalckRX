@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "42988911630",
+    "project_id": "master-tangent-174917"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42988911630:android:dafcb94217d97a45",
+        "android_client_info": {
+          "package_name": "com.leshchenko.root.mytest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42988911630-5frk2vrmut7e438d0famivnh764fti3u.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "42988911630-5f86stmlri7a8df8que7jou4mvc66jn9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leshchenko.root.mytest",
+            "certificate_hash": "2cbf5b7506a9802668257a4c2b05c4f48d10c09d"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMN9TGlHPMFyIxEYra6DwnXnMmZ9cyPGM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
